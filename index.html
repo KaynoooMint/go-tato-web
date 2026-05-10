@@ -177,7 +177,7 @@
 <div class="screen active" id="screen1">
   <section class="hero">
     <div class="logo-bar">
-      <img src="https://drive.google.com/thumbnail?id=1OHMiQyrdXRUn-UYC1XCC-o8ugdbfb5rq&sz=w100" alt="GO-TATO Logo" class="logo-img" onerror="this.style.display='none'">
+      <img src="https://drive.google.com/thumbnail?id=1OHMiQyrdXRUn-UYC1XCC-o8ugdbfb5rq&sz=w100" alt="GO-TATO Logo" class="logo-img">
       <span class="logo-text">GO-TATO</span>
     </div>
     <div class="hero-grid">
@@ -283,9 +283,9 @@
       <label class="form-label" for="custName">Nama Lengkap</label>
       <input class="form-input" type="text" id="custName" placeholder="Siapa nama kamu?">
       <button class="btn-wa" id="orderBtn" onclick="placeOrder()" disabled>
-        <span></span> Pesan Sekarang via WhatsApp
+        <span>💬</span> Pesan Sekarang via WhatsApp
       </button>
-      <p class="cart-note">Data pesanan akan otomatis tercatat di sistem kami untuk evaluasi layanan.</p>
+      <p class="cart-note">Klik tombol untuk kirim pesanan via WhatsApp</p>
     </div>
   </div>
 </div>
@@ -309,7 +309,7 @@
       </div>
     </div>
 
-    <div class="order-summary-card" id="orderSummaryCard">
+    <div class="order-summary-card">
       <h3>📋 Ringkasan Pesanan</h3>
       <div class="summary-row">
         <span class="summary-key">Nama</span>
@@ -356,7 +356,7 @@
         </div>
         <div class="step" id="step3">
           <div class="step-line"></div>
-          <div class="step-icon"></div>
+          <div class="step-icon">🛵</div>
           <div class="step-content">
             <div class="step-name">Dalam Pengiriman</div>
             <div class="step-desc">Pesanan dalam perjalanan menuju lokasi kamu</div>
@@ -373,7 +373,7 @@
     </div>
 
     <div class="tracking-actions">
-      <button class="btn-wa-green" id="trackWaBtn" onclick="contactViaWA()">
+      <button class="btn-wa-green" onclick="contactViaWA()">
         <span>💬</span> Hubungi via WhatsApp
       </button>
       <button class="btn-back-home" onclick="goBack(1)">
@@ -383,30 +383,57 @@
   </div>
 </div>
 
-<!-- Supabase JS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
 <script>
-// ─── INIT SUPABASE ───
-const supabase = supabase.createClient(
-  window.SUPABASE_CONFIG.url,
-  window.SUPABASE_CONFIG.anonKey
-);
+// ─── DATA PRODUK (HARDCODED) ───
+const products = [
+  { 
+    kategori: 'Base',
+    nama: 'Kentang Panggang',
+    harga: 10000,
+    deskripsi: 'Kentang panggang original dengan tambahan garam, lada hitam dan butter',
+    foto: 'https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200'
+  },
+  {
+    kategori: 'Paket',
+    nama: 'Carbonara Potato',
+    harga: 15000,
+    deskripsi: 'Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia',
+    foto: 'https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200'
+  },
+  {
+    kategori: 'Paket',
+    nama: 'Potato Black Pepper',
+    harga: 15000,
+    deskripsi: 'Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat',
+    foto: 'https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200'
+  },
+  {
+    kategori: 'Paket',
+    nama: 'Kentang Panggang Sate',
+    harga: 15000,
+    deskripsi: 'Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat',
+    foto: 'https://drive.google.com/thumbnail?id=19XDHdPP5sjHuD6PmlHCz7zcop_6-B1MW&sz=w200'
+  },
+  {
+    kategori: 'Paket',
+    nama: 'Kentang Panggang Rendang',
+    harga: 15000,
+    deskripsi: 'Kentang panggang original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia',
+    foto: 'https://drive.google.com/thumbnail?id=1Ap7hrKF_c0PY5gptHSqZ9uxSu2PKom51&sz=w200'
+  },
+  {
+    kategori: 'Paket',
+    nama: 'Tuna Spicy Mayo Potato',
+    harga: 15000,
+    deskripsi: 'Kentang panggang original dengan tambahan topping daging tuna berbalut spicy mayo',
+    foto: 'https://drive.google.com/thumbnail?id=1P505C-9MZb2ykHwKzB_fAvydQwMWFpc_&sz=w200'
+  }
+];
 
 // ─── STATE ───
 let cart = {};
 let currentOrder = null;
 const WA_NUMBER = '6282352171714';
-
-// DATA PRODUK STATIC (dari spreadsheet Anda)
-const products = [
-  { kategori:'Base',  nama:'Kentang Panggang',         harga:10000, deskripsi:'Kentang panggang original dengan tambahan garam, lada hitam dan butter', foto:'https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200' },
-  { kategori:'Paket', nama:'Carbonara Potato',          harga:15000, deskripsi:'Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia', foto:'https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200' },
-  { kategori:'Paket', nama:'Potato Black Pepper',       harga:15000, deskripsi:'Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat', foto:'https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Panggang Sate',     harga:15000, deskripsi:'Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat', foto:'https://drive.google.com/thumbnail?id=19XDHdPP5sjHuD6PmlHCz7zcop_6-B1MW&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Panggang Rendang',  harga:15000, deskripsi:'Kentang panggan original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia', foto:'https://drive.google.com/thumbnail?id=1Ap7hrKF_c0PY5gptHSqZ9uxSu2PKom51&sz=w200' },
-  { kategori:'Paket', nama:'Tuna Spicy Mayo Potato',    harga:15000, deskripsi:'Kentang panggang original dengan tambahan topping daging tuna berbalut spicy mayo', foto:'https://drive.google.com/thumbnail?id=1P505C-9MZb2ykHwKzB_fAvydQwMWFpc_&sz=w200' },
-];
 
 // ─── NAVIGATION ───
 function showScreen(n) {
@@ -432,30 +459,16 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ─── HELPER: Drive Thumbnail ───
-function getDriveThumb(url) {
-  if (!url) return 'https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔';
-  let fileId = '';
-  if (url.includes('/d/')) {
-    const match = url.match(/\/d\/([^\/\?]+)/);
-    if (match) fileId = match[1];
-  } else if (url.includes('id=')) {
-    const match = url.match(/id=([^&]+)/);
-    if (match) fileId = match[1];
-  }
-  return fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w200` : 'https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔';
-}
-
-// ─── RENDER ───
+// ─── RENDER MENU ───
 function renderMenuGrid() {
   const grid = document.getElementById('menuGrid');
   grid.innerHTML = products.map(p => `
     <div class="menu-card" onclick="goToOrder()">
-      <img class="menu-card-img" src="${getDriveThumb(p.foto)}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text='">
+      <img class="menu-card-img" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
       <div class="menu-card-name">${p.nama}</div>
       <div class="menu-card-price">Rp ${Number(p.harga).toLocaleString('id-ID')}</div>
       <div class="menu-card-cat">${p.kategori}</div>
-      <div class="menu-card-desc">${p.deskripsi ? p.deskripsi.substring(0, 60) + '...' : ''}</div>
+      <div class="menu-card-desc">${p.deskripsi.substring(0, 60)}...</div>
     </div>
   `).join('');
 }
@@ -464,11 +477,11 @@ function renderProductList() {
   const list = document.getElementById('productList');
   list.innerHTML = products.map((p, i) => `
     <div class="product-item">
-      <img class="product-thumb" src="${getDriveThumb(p.foto)}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+      <img class="product-thumb" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
       <div class="product-info">
         <span class="cat-badge ${p.kategori === 'Base' ? 'cat-base' : 'cat-paket'}">${p.kategori}</span>
         <h3>${p.nama}</h3>
-        <div class="desc">${p.deskripsi || ''}</div>
+        <div class="desc">${p.deskripsi}</div>
         <div class="price">Rp ${Number(p.harga).toLocaleString('id-ID')}</div>
       </div>
       <div class="qty-ctrl">
@@ -511,7 +524,7 @@ function updateCart() {
   document.getElementById('orderBtn').disabled = (items.length === 0 || !name);
 }
 
-// ─── PLACE ORDER (SUPABASE) ───
+// ─── PLACE ORDER ───
 function placeOrder() {
   const name = document.getElementById('custName').value.trim();
   const items = Object.entries(cart).map(([i, qty]) => ({ nama: products[i].nama, harga: products[i].harga, qty }));
@@ -520,37 +533,19 @@ function placeOrder() {
   if (!name) { showToast('⚠️ Masukkan nama kamu dulu!'); return; }
   if (items.length === 0) { showToast('⚠️ Pilih menu dulu!'); return; }
 
-  const btn = document.getElementById('orderBtn');
-  btn.disabled = true; btn.innerHTML = '⏳ Menyimpan pesanan...';
-
   const orderId = 'GT-' + Date.now().toString().slice(-6);
-
-  // Simpan ke Supabase
-  supabase
-    .from('orders')
-    .insert([{
-      nama_pelanggan: name,
-      detail_pesanan: items.map(i => `${i.nama} (x${i.qty})`).join(', '),
-      total_harga: total
-    }])
-    .then(({ error }) => {
-      if (error) console.error('Supabase error:', error);
-      finishOrder(orderId);
-    })
-    .catch(err => {
-      console.error('Exception:', err);
-      finishOrder(orderId);
-    });
-
-  function finishOrder(id) {
-    currentOrder = { nama: name, items, total, orderId: id };
-    sendWhatsApp(currentOrder);
-    showTrackingScreen(currentOrder);
-    btn.disabled = false; btn.innerHTML = '<span>💬</span> Pesan Sekarang via WhatsApp';
-  }
+  
+  currentOrder = { nama: name, items, total, orderId };
+  sendWhatsApp(currentOrder);
+  showTrackingScreen(currentOrder);
+  
+  cart = {};
+  document.getElementById('custName').value = '';
+  renderProductList();
+  updateCart();
 }
 
-// ── WHATSAPP ───
+// ─── WHATSAPP ───
 function sendWhatsApp(order) {
   const detail = order.items.map(i => `• ${i.nama} x${i.qty} = Rp ${(i.harga*i.qty).toLocaleString('id-ID')}`).join('\n');
   const msg = `Halo GO-TATO! 🥔\n\n*Pesanan Baru*\nID: ${order.orderId}\nNama: ${order.nama}\n\n*Detail Pesanan:*\n${detail}\n\n*Total: Rp ${order.total.toLocaleString('id-ID')}*\n\nMohon konfirmasi pesanan ya `;
@@ -566,7 +561,6 @@ function showTrackingScreen(order) {
   document.getElementById('step0Time').textContent = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
   showScreen(3);
   simulateTracking();
-  cart = {}; document.getElementById('custName').value = ''; renderProductList(); updateCart();
 }
 
 function simulateTracking() {
