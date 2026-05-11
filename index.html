@@ -196,8 +196,8 @@
     </div>
     <div class="about-text">
       <h2>All About GO-TATO</h2>
-      <p>Kami merupakan outlet yang fokus pada penyajian kentang panggang siap saji dengan menawarkan berbagai topping dan berdiri sejak 1945.</p>
-      <p>Kehangatan dalam setiap gigitan, Kelezatan dalam setiap pilihan!!!</p>
+      <p>Lahir di tahun 2026, GO-TATO hadir sebagai jawaban atas kebutuhan masyarakat urban akan makanan yang cepat, sehat, dan berkarakter. Kami percaya bahwa kentang panggang adalah kanvas sempurna untuk mengeksplorasi kekayaan rasa Nusantara dan Internasional.</p>
+      <p>Meskipun baru memulai perjalanan kami tahun ini, GO-TATO dibangun dengan visi masa depan: menggabungkan teknologi pemesanan yang cerdas dengan kualitas bahan organik pilihan. Kami tidak hanya menyajikan makanan, kami menyajikan standar baru dalam industri ready-to-eat—hangat, presisi, dan lezat.</p>
       <button class="btn-outline" onclick="goToOrder()">PESAN SEKARANG</button>
     </div>
   </section>
@@ -282,10 +282,12 @@
       </div>
       <label class="form-label" for="custName">Nama Lengkap</label>
       <input class="form-input" type="text" id="custName" placeholder="Siapa nama kamu?">
+      <label class="form-label" for="custAddress" style="margin-top:12px;">Alamat Pengantaran</label>
+      <input class="form-input" type="text" id="custAddress" placeholder="Jl. ... No. ... / Patokan">
       <button class="btn-wa" id="orderBtn" onclick="placeOrder()" disabled>
-        <span>💬</span> Pesan Sekarang via WhatsApp
+        <span>📦</span> Pesan Sekarang
       </button>
-      <p class="cart-note">Klik tombol untuk kirim pesanan via WhatsApp</p>
+      <p class="cart-note">Klik tombol untuk lanjut ke konfirmasi & tracking</p>
     </div>
   </div>
 </div>
@@ -294,7 +296,7 @@
 <div class="screen" id="screen3">
   <div class="tracking-header">
     <button class="back-btn" onclick="goBack(1)">←</button>
-    <h1>🛵 Pesanan Dikirim!</h1>
+    <h1> Pesanan Dikirim!</h1>
     <p>Terima kasih sudah memesan di GO-TATO</p>
     <div class="order-id-badge" id="trackOrderId">GT-000000</div>
   </div>
@@ -314,6 +316,10 @@
       <div class="summary-row">
         <span class="summary-key">Nama</span>
         <span class="summary-val" id="summaryNama">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-key">Alamat</span>
+        <span class="summary-val" id="summaryAlamat">—</span>
       </div>
       <div class="summary-row">
         <span class="summary-key">Detail</span>
@@ -339,7 +345,7 @@
         </div>
         <div class="step active" id="step1">
           <div class="step-line"></div>
-          <div class="step-icon">👨‍🍳</div>
+          <div class="step-icon">‍🍳</div>
           <div class="step-content">
             <div class="step-name">Sedang Diproses</div>
             <div class="step-desc">Tim dapur kami sedang menyiapkan kentang panggang terbaik untukmu</div>
@@ -348,7 +354,7 @@
         </div>
         <div class="step" id="step2">
           <div class="step-line"></div>
-          <div class="step-icon">🔥</div>
+          <div class="step-icon"></div>
           <div class="step-content">
             <div class="step-name">Sedang Dipanggang</div>
             <div class="step-desc">Kentang sedang dipanggang sempurna dengan topping pilihan kamu</div>
@@ -356,14 +362,14 @@
         </div>
         <div class="step" id="step3">
           <div class="step-line"></div>
-          <div class="step-icon">🛵</div>
+          <div class="step-icon"></div>
           <div class="step-content">
             <div class="step-name">Dalam Pengiriman</div>
             <div class="step-desc">Pesanan dalam perjalanan menuju lokasi kamu</div>
           </div>
         </div>
         <div class="step" id="step4">
-          <div class="step-icon">🎉</div>
+          <div class="step-icon"></div>
           <div class="step-content">
             <div class="step-name">Pesanan Tiba!</div>
             <div class="step-desc">Selamat menikmati GO-TATO kamu!</div>
@@ -373,7 +379,7 @@
     </div>
 
     <div class="tracking-actions">
-      <button class="btn-wa-green" onclick="contactViaWA()">
+      <button class="btn-wa-green" id="trackWaBtn" onclick="contactViaWA()">
         <span>💬</span> Hubungi via WhatsApp
       </button>
       <button class="btn-back-home" onclick="goBack(1)">
@@ -384,53 +390,22 @@
 </div>
 
 <script>
-// ─── DATA PRODUK (HARDCODED) ───
+// ─── DATA PRODUK (HARDCODED DARI SPREADSHEET GOTATO NEW) ───
 const products = [
-  { 
-    kategori: 'Base',
-    nama: 'Kentang Panggang',
-    harga: 10000,
-    deskripsi: 'Kentang panggang original dengan tambahan garam, lada hitam dan butter',
-    foto: 'https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200'
-  },
-  {
-    kategori: 'Paket',
-    nama: 'Carbonara Potato',
-    harga: 15000,
-    deskripsi: 'Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia',
-    foto: 'https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200'
-  },
-  {
-    kategori: 'Paket',
-    nama: 'Potato Black Pepper',
-    harga: 15000,
-    deskripsi: 'Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat',
-    foto: 'https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200'
-  },
-  {
-    kategori: 'Paket',
-    nama: 'Kentang Panggang Sate',
-    harga: 15000,
-    deskripsi: 'Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat',
-    foto: 'https://drive.google.com/thumbnail?id=19XDHdPP5sjHuD6PmlHCz7zcop_6-B1MW&sz=w200'
-  },
-  {
-    kategori: 'Paket',
-    nama: 'Kentang Panggang Rendang',
-    harga: 15000,
-    deskripsi: 'Kentang panggang original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia',
-    foto: 'https://drive.google.com/thumbnail?id=1Ap7hrKF_c0PY5gptHSqZ9uxSu2PKom51&sz=w200'
-  },
-  {
-    kategori: 'Paket',
-    nama: 'Tuna Spicy Mayo Potato',
-    harga: 15000,
-    deskripsi: 'Kentang panggang original dengan tambahan topping daging tuna berbalut spicy mayo',
-    foto: 'https://drive.google.com/thumbnail?id=1P505C-9MZb2ykHwKzB_fAvydQwMWFpc_&sz=w200'
-  }
+  { kategori:'Base',  nama:'Kentang Panggang',         harga:10000, deskripsi:'Kentang panggang original dengan tambahan garam, lada hitam dan butter', foto:'https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200' },
+  { kategori:'Paket', nama:'Carbonara Potato',          harga:15000, deskripsi:'Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia', foto:'https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200' },
+  { kategori:'Paket', nama:'Potato Beef Black Pepper',  harga:20000, deskripsi:'Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat', foto:'https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200' },
+  { kategori:'Paket', nama:'Kentang Panggang Sate',     harga:20000, deskripsi:'Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat', foto:'https://drive.google.com/thumbnail?id=1NZvfdrvGFAJ1wVwasF7BbcS4V75DMlyd&sz=w200' },
+  { kategori:'Paket', nama:'Kentang Panggang Rendang',  harga:20000, deskripsi:'Kentang panggang original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia', foto:'https://drive.google.com/thumbnail?id=1uKd0YP4lUytN0DoGfG3J_4oDjmvynYGt&sz=w200' },
+  { kategori:'Paket', nama:'Kentang Habang',            harga:15000, deskripsi:'Kentang panggang dengan toping Ayam Masak Habang khas Banhar yang manis gurih', foto:'https://drive.google.com/thumbnail?id=1nWJE_gNCsFDTVR9sKrhg9MjuagSPKztT&sz=w200' },
+  { kategori:'Paket', nama:'Kentang Cumi Hitam',        harga:15000, deskripsi:'Kombinasi unik kentang panggang dengan cumi tinta hitam padas gurih khas Jawa Timur', foto:'https://drive.google.com/thumbnail?id=1QgIA519Elgqrw58xqV40hUlwmaLqD4KG&sz=w200' },
+  { kategori:'Paket', nama:'Potato Curry Chicken',      harga:15000, deskripsi:'Potongan ayam bumbu kari kental dengan rempah kuning yang menghangatkan tubuh', foto:'https://drive.google.com/thumbnail?id=1LlS0dNBl2dbthFTXWiJKvOtiBjPUycHF&sz=w200' },
+  { kategori:'Paket', nama:'Potato Spicy Mayo Tuna',    harga:15000, deskripsi:'Topping tuna segar dengan saus mayones pedas untuk sensai rasa yang lebih ringan', foto:'https://drive.google.com/thumbnail?id=1vp_z1VO3wqnjDjHI481nmWOVKRwr9WaQ&sz=w200' },
+  { kategori:'Paket', nama:'Potato Chessy Mushroom',    harga:15000, deskripsi:'Siraman saus keju lumer dan tumisan jamur kancing untuk pencinta rasa gurih modern', foto:'https://drive.google.com/thumbnail?id=1bmxQzsD5jVlMtMqPCyal5_tuGwl0GPq4&sz=w200' },
+  { kategori:'Paket', nama:'Kentang Rica-rica',         harga:15000, deskripsi:'Akselerasi rasa pedas dari topping ayam suwir bumbu rica rica manado yang segar', foto:'https://drive.google.com/thumbnail?id=12fxkSf57QG1YRyfDiv2F41iEkhPDAaN-&sz=w200' }
 ];
 
-// ─── STATE ───
+// ─── STATE ──
 let cart = {};
 let currentOrder = null;
 const WA_NUMBER = '6282352171714';
@@ -507,6 +482,7 @@ function updateCart() {
   const total = items.reduce((s, i) => s + i.harga * i.qty, 0);
   const content = document.getElementById('cartContent');
   const name = document.getElementById('custName').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
 
   content.innerHTML = items.length === 0 
     ? '<p class="cart-empty">Belum ada menu terpilih</p>'
@@ -521,26 +497,31 @@ function updateCart() {
       `).join('')}</div>`;
 
   document.getElementById('cartTotal').textContent = 'Rp ' + total.toLocaleString('id-ID');
-  document.getElementById('orderBtn').disabled = (items.length === 0 || !name);
+  // Tombol aktif hanya jika ada item, nama, DAN alamat
+  document.getElementById('orderBtn').disabled = (items.length === 0 || !name || !address);
 }
 
 // ─── PLACE ORDER ───
 function placeOrder() {
   const name = document.getElementById('custName').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
   const items = Object.entries(cart).map(([i, qty]) => ({ nama: products[i].nama, harga: products[i].harga, qty }));
   const total = items.reduce((s, i) => s + i.harga * i.qty, 0);
 
   if (!name) { showToast('⚠️ Masukkan nama kamu dulu!'); return; }
+  if (!address) { showToast('⚠️ Masukkan alamat pengantaran!'); return; }
   if (items.length === 0) { showToast('⚠️ Pilih menu dulu!'); return; }
 
   const orderId = 'GT-' + Date.now().toString().slice(-6);
   
-  currentOrder = { nama: name, items, total, orderId };
+  currentOrder = { nama: name, alamat: address, items, total, orderId };
   sendWhatsApp(currentOrder);
   showTrackingScreen(currentOrder);
   
+  // Reset form
   cart = {};
   document.getElementById('custName').value = '';
+  document.getElementById('custAddress').value = '';
   renderProductList();
   updateCart();
 }
@@ -548,14 +529,15 @@ function placeOrder() {
 // ─── WHATSAPP ───
 function sendWhatsApp(order) {
   const detail = order.items.map(i => `• ${i.nama} x${i.qty} = Rp ${(i.harga*i.qty).toLocaleString('id-ID')}`).join('\n');
-  const msg = `Halo GO-TATO! 🥔\n\n*Pesanan Baru*\nID: ${order.orderId}\nNama: ${order.nama}\n\n*Detail Pesanan:*\n${detail}\n\n*Total: Rp ${order.total.toLocaleString('id-ID')}*\n\nMohon konfirmasi pesanan ya `;
+  const msg = `Halo GO-TATO! 🥔\n\n*Pesanan Baru*\nID: ${order.orderId}\nNama: ${order.nama}\nAlamat: ${order.alamat}\n\n*Detail Pesanan:*\n${detail}\n\n*Total: Rp ${order.total.toLocaleString('id-ID')}*\n\nMohon konfirmasi pesanan ya 🙏`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// ─── TRACKING ───
+// ── TRACKING ───
 function showTrackingScreen(order) {
   document.getElementById('trackOrderId').textContent = order.orderId;
   document.getElementById('summaryNama').textContent = order.nama;
+  document.getElementById('summaryAlamat').textContent = order.alamat;
   document.getElementById('summaryDetail').textContent = order.items.map(i => `${i.nama} x${i.qty}`).join(', ');
   document.getElementById('summaryTotal').textContent = 'Rp ' + order.total.toLocaleString('id-ID');
   document.getElementById('step0Time').textContent = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
@@ -575,7 +557,7 @@ function simulateTracking() {
         curr.classList.add('active');
         if (i === 4) {
           curr.classList.remove('active'); curr.classList.add('done');
-          curr.querySelector('.step-icon').textContent = '🎉';
+          curr.querySelector('.step-icon').textContent = '';
           document.getElementById('etaText').textContent = 'Sudah Tiba! 🎉';
         }
       }
@@ -591,6 +573,7 @@ function contactViaWA() {
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('custName').addEventListener('input', updateCart);
+  document.getElementById('custAddress').addEventListener('input', updateCart);
   renderMenuGrid();
   renderProductList();
 });
