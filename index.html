@@ -207,7 +207,7 @@
     <p class="section-sub">Penasaran? Ini dia beberapa produk andalan kami</p>
     <div class="menu-grid" id="menuGrid"></div>
     <div class="menu-cta">
-      <button class="btn-primary" onclick="goToOrder()">🍽️ MENU LENGKAP & PESAN</button>
+      <button class="btn-primary" onclick="goToOrder()">️ MENU LENGKAP & PESAN</button>
     </div>
   </section>
 
@@ -296,7 +296,7 @@
 <div class="screen" id="screen3">
   <div class="tracking-header">
     <button class="back-btn" onclick="goBack(1)">←</button>
-    <h1> Pesanan Dikirim!</h1>
+    <h1>🛵 Pesanan Dikirim!</h1>
     <p>Terima kasih sudah memesan di GO-TATO</p>
     <div class="order-id-badge" id="trackOrderId">GT-000000</div>
   </div>
@@ -345,7 +345,7 @@
         </div>
         <div class="step active" id="step1">
           <div class="step-line"></div>
-          <div class="step-icon">‍🍳</div>
+          <div class="step-icon">👨‍🍳</div>
           <div class="step-content">
             <div class="step-name">Sedang Diproses</div>
             <div class="step-desc">Tim dapur kami sedang menyiapkan kentang panggang terbaik untukmu</div>
@@ -420,6 +420,15 @@ function showScreen(n) {
 function goToOrder() {
   showScreen(2);
   renderProductList();
+  updateCart();
+}
+
+// ✨ FITUR BARU: Klik menu di halaman awal -> tambah keranjang & langsung ke halaman pesan
+function addToCartFromMenu(idx) {
+  cart[idx] = (cart[idx] || 0) + 1; // Tambah qty
+  showScreen(2);                    // Pindah screen
+  renderProductList();              // Refresh list produk
+  updateCart();                     // Refresh tampilan keranjang
 }
 
 function goBack(to) {
@@ -437,9 +446,9 @@ function showToast(msg) {
 // ─── RENDER MENU ───
 function renderMenuGrid() {
   const grid = document.getElementById('menuGrid');
-  grid.innerHTML = products.map(p => `
-    <div class="menu-card" onclick="goToOrder()">
-      <img class="menu-card-img" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+  grid.innerHTML = products.map((p, i) => `
+    <div class="menu-card" onclick="addToCartFromMenu(${i})">
+      <img class="menu-card-img" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text='">
       <div class="menu-card-name">${p.nama}</div>
       <div class="menu-card-price">Rp ${Number(p.harga).toLocaleString('id-ID')}</div>
       <div class="menu-card-cat">${p.kategori}</div>
@@ -452,7 +461,7 @@ function renderProductList() {
   const list = document.getElementById('productList');
   list.innerHTML = products.map((p, i) => `
     <div class="product-item">
-      <img class="product-thumb" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+      <img class="product-thumb" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text='">
       <div class="product-info">
         <span class="cat-badge ${p.kategori === 'Base' ? 'cat-base' : 'cat-paket'}">${p.kategori}</span>
         <h3>${p.nama}</h3>
@@ -497,7 +506,6 @@ function updateCart() {
       `).join('')}</div>`;
 
   document.getElementById('cartTotal').textContent = 'Rp ' + total.toLocaleString('id-ID');
-  // Tombol aktif hanya jika ada item, nama, DAN alamat
   document.getElementById('orderBtn').disabled = (items.length === 0 || !name || !address);
 }
 
@@ -518,7 +526,6 @@ function placeOrder() {
   sendWhatsApp(currentOrder);
   showTrackingScreen(currentOrder);
   
-  // Reset form
   cart = {};
   document.getElementById('custName').value = '';
   document.getElementById('custAddress').value = '';
@@ -533,7 +540,7 @@ function sendWhatsApp(order) {
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// ── TRACKING ───
+// ─── TRACKING ───
 function showTrackingScreen(order) {
   document.getElementById('trackOrderId').textContent = order.orderId;
   document.getElementById('summaryNama').textContent = order.nama;
@@ -558,7 +565,7 @@ function simulateTracking() {
         if (i === 4) {
           curr.classList.remove('active'); curr.classList.add('done');
           curr.querySelector('.step-icon').textContent = '';
-          document.getElementById('etaText').textContent = 'Sudah Tiba! 🎉';
+          document.getElementById('etaText').textContent = 'Sudah Tiba! ';
         }
       }
     }, d);
