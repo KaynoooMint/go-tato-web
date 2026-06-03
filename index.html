@@ -184,7 +184,7 @@
       <div>
         <h1 class="hero-title">GO-TATO</h1>
         <p class="hero-sub">Kentang Panggang Siap Santap<br>dengan Lauk Beraneka Ragam</p>
-        <button class="btn-primary" onclick="goToOrder()">🥔 PESAN SEKARANG</button>
+        <button class="btn-primary" onclick="goToOrder()"> PESAN SEKARANG</button>
       </div>
       <img src="https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w400" alt="Kentang Panggang GO-TATO" class="hero-food-img">
     </div>
@@ -205,9 +205,100 @@
   <section class="menu-section">
     <h2 class="section-title">Aneka Topping Pilihan</h2>
     <p class="section-sub">Penasaran? Ini dia beberapa produk andalan kami</p>
-    <div class="menu-grid" id="menuGrid"></div>
+    
+    <div class="menu-grid" id="menuGrid">
+      <!-- 0 -->
+      <div class="menu-card" onclick="addToCartFromMenu(0)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200" alt="Kentang Panggang" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Kentang Panggang</div>
+        <div class="menu-card-price">Rp 10.000</div>
+        <div class="menu-card-cat">Base</div>
+        <div class="menu-card-desc">Kentang panggang original dengan tambahan garam, lada hitam dan butter...</div>
+      </div>
+      <!-- 1 -->
+      <div class="menu-card" onclick="addToCartFromMenu(1)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200" alt="Carbonara Potato" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Carbonara Potato</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia...</div>
+      </div>
+      <!-- 2 -->
+      <div class="menu-card" onclick="addToCartFromMenu(2)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200" alt="Potato Beef Black Pepper" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text='">
+        <div class="menu-card-name">Potato Beef Black Pepper</div>
+        <div class="menu-card-price">Rp 20.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat...</div>
+      </div>
+      <!-- 3 -->
+      <div class="menu-card" onclick="addToCartFromMenu(3)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1NZvfdrvGFAJ1wVwasF7BbcS4V75DMlyd&sz=w200" alt="Kentang Panggang Sate" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Kentang Panggang Sate</div>
+        <div class="menu-card-price">Rp 20.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat...</div>
+      </div>
+      <!-- 4 -->
+      <div class="menu-card" onclick="addToCartFromMenu(4)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1uKd0YP4lUytN0DoGfG3J_4oDjmvynYGt&sz=w200" alt="Kentang Panggang Rendang" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Kentang Panggang Rendang</div>
+        <div class="menu-card-price">Rp 20.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Kentang panggang original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia...</div>
+      </div>
+      <!-- 5 -->
+      <div class="menu-card" onclick="addToCartFromMenu(5)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1nWJE_gNCsFDTVR9sKrhg9MjuagSPKztT&sz=w200" alt="Kentang Habang" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Kentang Habang</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Kentang panggang dengan toping Ayam Masak Habang khas Banhar yang manis gurih...</div>
+      </div>
+      <!-- 6 -->
+      <div class="menu-card" onclick="addToCartFromMenu(6)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1QgIA519Elgqrw58xqV40hUlwmaLqD4KG&sz=w200" alt="Kentang Cumi Hitam" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Kentang Cumi Hitam</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Kombinasi unik kentang panggang dengan cumi tinta hitam padas gurih khas Jawa Timur...</div>
+      </div>
+      <!-- 7 -->
+      <div class="menu-card" onclick="addToCartFromMenu(7)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1LlS0dNBl2dbthFTXWiJKvOtiBjPUycHF&sz=w200" alt="Potato Curry Chicken" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Potato Curry Chicken</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Potongan ayam bumbu kari kental dengan rempah kuning yang menghangatkan tubuh...</div>
+      </div>
+      <!-- 8 -->
+      <div class="menu-card" onclick="addToCartFromMenu(8)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1vp_z1VO3wqnjDjHI481nmWOVKRwr9WaQ&sz=w200" alt="Potato Spicy Mayo Tuna" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Potato Spicy Mayo Tuna</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Topping tuna segar dengan saus mayones pedas untuk sensai rasa yang lebih ringan...</div>
+      </div>
+      <!-- 9 -->
+      <div class="menu-card" onclick="addToCartFromMenu(9)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=1bmxQzsD5jVlMtMqPCyal5_tuGwl0GPq4&sz=w200" alt="Potato Chessy Mushroom" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Potato Chessy Mushroom</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Siraman saus keju lumer dan tumisan jamur kancing untuk pencinta rasa gurih modern...</div>
+      </div>
+      <!-- 10 -->
+      <div class="menu-card" onclick="addToCartFromMenu(10)">
+        <img class="menu-card-img" src="https://drive.google.com/thumbnail?id=12fxkSf57QG1YRyfDiv2F41iEkhPDAaN-&sz=w200" alt="Kentang Rica-rica" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text=🥔'">
+        <div class="menu-card-name">Kentang Rica-rica</div>
+        <div class="menu-card-price">Rp 15.000</div>
+        <div class="menu-card-cat">Paket</div>
+        <div class="menu-card-desc">Akselerasi rasa pedas dari topping ayam suwir bumbu rica rica manado yang segar...</div>
+      </div>
+    </div>
+
     <div class="menu-cta">
-      <button class="btn-primary" onclick="goToOrder()">️ MENU LENGKAP & PESAN</button>
+      <button class="btn-primary" onclick="goToOrder()">🍽️ MENU LENGKAP & PESAN</button>
     </div>
   </section>
 
@@ -268,12 +359,178 @@
       </div>
       <div class="order-products">
         <h2>Menu Utama & Topping</h2>
-        <div class="product-list" id="productList"></div>
+        <div class="product-list" id="productList">
+          <!-- 0 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200" alt="Kentang Panggang" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-base">Base</span>
+              <h3>Kentang Panggang</h3>
+              <div class="desc">Kentang panggang original dengan tambahan garam, lada hitam dan butter</div>
+              <div class="price">Rp 10.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(0, -1)">−</button>
+              <span class="qty-val" id="qty-0">0</span>
+              <button class="qty-btn" onclick="changeQty(0, 1)">+</button>
+            </div>
+          </div>
+          <!-- 1 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200" alt="Carbonara Potato" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Carbonara Potato</h3>
+              <div class="desc">Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(1, -1)">−</button>
+              <span class="qty-val" id="qty-1">0</span>
+              <button class="qty-btn" onclick="changeQty(1, 1)">+</button>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200" alt="Potato Beef Black Pepper" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Potato Beef Black Pepper</h3>
+              <div class="desc">Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat</div>
+              <div class="price">Rp 20.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(2, -1)">−</button>
+              <span class="qty-val" id="qty-2">0</span>
+              <button class="qty-btn" onclick="changeQty(2, 1)">+</button>
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1NZvfdrvGFAJ1wVwasF7BbcS4V75DMlyd&sz=w200" alt="Kentang Panggang Sate" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Kentang Panggang Sate</h3>
+              <div class="desc">Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat</div>
+              <div class="price">Rp 20.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(3, -1)">−</button>
+              <span class="qty-val" id="qty-3">0</span>
+              <button class="qty-btn" onclick="changeQty(3, 1)">+</button>
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1uKd0YP4lUytN0DoGfG3J_4oDjmvynYGt&sz=w200" alt="Kentang Panggang Rendang" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Kentang Panggang Rendang</h3>
+              <div class="desc">Kentang panggang original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia</div>
+              <div class="price">Rp 20.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(4, -1)">−</button>
+              <span class="qty-val" id="qty-4">0</span>
+              <button class="qty-btn" onclick="changeQty(4, 1)">+</button>
+            </div>
+          </div>
+          <!-- 5 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1nWJE_gNCsFDTVR9sKrhg9MjuagSPKztT&sz=w200" alt="Kentang Habang" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Kentang Habang</h3>
+              <div class="desc">Kentang panggang dengan toping Ayam Masak Habang khas Banhar yang manis gurih</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(5, -1)">−</button>
+              <span class="qty-val" id="qty-5">0</span>
+              <button class="qty-btn" onclick="changeQty(5, 1)">+</button>
+            </div>
+          </div>
+          <!-- 6 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1QgIA519Elgqrw58xqV40hUlwmaLqD4KG&sz=w200" alt="Kentang Cumi Hitam" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Kentang Cumi Hitam</h3>
+              <div class="desc">Kombinasi unik kentang panggang dengan cumi tinta hitam padas gurih khas Jawa Timur</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(6, -1)">−</button>
+              <span class="qty-val" id="qty-6">0</span>
+              <button class="qty-btn" onclick="changeQty(6, 1)">+</button>
+            </div>
+          </div>
+          <!-- 7 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1LlS0dNBl2dbthFTXWiJKvOtiBjPUycHF&sz=w200" alt="Potato Curry Chicken" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text='">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Potato Curry Chicken</h3>
+              <div class="desc">Potongan ayam bumbu kari kental dengan rempah kuning yang menghangatkan tubuh</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(7, -1)">−</button>
+              <span class="qty-val" id="qty-7">0</span>
+              <button class="qty-btn" onclick="changeQty(7, 1)">+</button>
+            </div>
+          </div>
+          <!-- 8 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1vp_z1VO3wqnjDjHI481nmWOVKRwr9WaQ&sz=w200" alt="Potato Spicy Mayo Tuna" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Potato Spicy Mayo Tuna</h3>
+              <div class="desc">Topping tuna segar dengan saus mayones pedas untuk sensai rasa yang lebih ringan</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(8, -1)">−</button>
+              <span class="qty-val" id="qty-8">0</span>
+              <button class="qty-btn" onclick="changeQty(8, 1)">+</button>
+            </div>
+          </div>
+          <!-- 9 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=1bmxQzsD5jVlMtMqPCyal5_tuGwl0GPq4&sz=w200" alt="Potato Chessy Mushroom" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Potato Chessy Mushroom</h3>
+              <div class="desc">Siraman saus keju lumer dan tumisan jamur kancing untuk pencinta rasa gurih modern</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(9, -1)">−</button>
+              <span class="qty-val" id="qty-9">0</span>
+              <button class="qty-btn" onclick="changeQty(9, 1)">+</button>
+            </div>
+          </div>
+          <!-- 10 -->
+          <div class="product-item">
+            <img class="product-thumb" src="https://drive.google.com/thumbnail?id=12fxkSf57QG1YRyfDiv2F41iEkhPDAaN-&sz=w200" alt="Kentang Rica-rica" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text=🥔'">
+            <div class="product-info">
+              <span class="cat-badge cat-paket">Paket</span>
+              <h3>Kentang Rica-rica</h3>
+              <div class="desc">Akselerasi rasa pedas dari topping ayam suwir bumbu rica rica manado yang segar</div>
+              <div class="price">Rp 15.000</div>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(10, -1)">−</button>
+              <span class="qty-val" id="qty-10">0</span>
+              <button class="qty-btn" onclick="changeQty(10, 1)">+</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="order-right">
-      <div class="cart-title">🛒 Pesanan Kamu</div>
+      <div class="cart-title"> Pesanan Kamu</div>
       <div id="cartContent"><p class="cart-empty">Belum ada menu terpilih</p></div>
       <hr class="cart-divider">
       <div class="cart-total-row">
@@ -285,7 +542,7 @@
       <label class="form-label" for="custAddress" style="margin-top:12px;">Alamat Pengantaran</label>
       <input class="form-input" type="text" id="custAddress" placeholder="Jl. ... No. ... / Patokan">
       <button class="btn-wa" id="orderBtn" onclick="placeOrder()" disabled>
-        <span>📦</span> Pesan Sekarang
+        <span></span> Pesan Sekarang
       </button>
       <p class="cart-note">Klik tombol untuk lanjut ke konfirmasi & tracking</p>
     </div>
@@ -345,7 +602,7 @@
         </div>
         <div class="step active" id="step1">
           <div class="step-line"></div>
-          <div class="step-icon">👨‍🍳</div>
+          <div class="step-icon">👨‍</div>
           <div class="step-content">
             <div class="step-name">Sedang Diproses</div>
             <div class="step-desc">Tim dapur kami sedang menyiapkan kentang panggang terbaik untukmu</div>
@@ -380,7 +637,7 @@
 
     <div class="tracking-actions">
       <button class="btn-wa-green" id="trackWaBtn" onclick="contactViaWA()">
-        <span>💬</span> Hubungi via WhatsApp
+        <span></span> Hubungi via WhatsApp
       </button>
       <button class="btn-back-home" onclick="goBack(1)">
         ← Kembali ke Beranda
@@ -390,19 +647,19 @@
 </div>
 
 <script>
-// ─── DATA PRODUK (HARDCODED DARI SPREADSHEET GOTATO NEW) ───
+// ─── DATA PRODUK (Hanya untuk logika keranjang & WhatsApp, TIDAK untuk mounting HTML) ───
 const products = [
-  { kategori:'Base',  nama:'Kentang Panggang',         harga:10000, deskripsi:'Kentang panggang original dengan tambahan garam, lada hitam dan butter', foto:'https://drive.google.com/thumbnail?id=1HjzC_uGf2eSPJ6wOfVxd5UnZvcBc_DW1&sz=w200' },
-  { kategori:'Paket', nama:'Carbonara Potato',          harga:15000, deskripsi:'Kentang panggang original dengan tambahan topping carbonara yang membuat anda dapat menjadi orang Italia', foto:'https://drive.google.com/thumbnail?id=1nH0aMoz9FLOW8x66X8IT2oFOvFFzoShI&sz=w200' },
-  { kategori:'Paket', nama:'Potato Beef Black Pepper',  harga:20000, deskripsi:'Kentang panggang original dengan tambahan topping lada daging sapi lada hitam yang menggairahkan semangat', foto:'https://drive.google.com/thumbnail?id=14haUGTn5jwU73QWwR6RhP32G3jGlf0aM&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Panggang Sate',     harga:20000, deskripsi:'Kentang panggang original dengan tambahan topping sate ayam yang menggabungkan kelezatan sate nusantara dengan budaya barat', foto:'https://drive.google.com/thumbnail?id=1NZvfdrvGFAJ1wVwasF7BbcS4V75DMlyd&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Panggang Rendang',  harga:20000, deskripsi:'Kentang panggang original dengan tambahan topping rendang sebagai salah satu makanan terenak di dunia', foto:'https://drive.google.com/thumbnail?id=1uKd0YP4lUytN0DoGfG3J_4oDjmvynYGt&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Habang',            harga:15000, deskripsi:'Kentang panggang dengan toping Ayam Masak Habang khas Banhar yang manis gurih', foto:'https://drive.google.com/thumbnail?id=1nWJE_gNCsFDTVR9sKrhg9MjuagSPKztT&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Cumi Hitam',        harga:15000, deskripsi:'Kombinasi unik kentang panggang dengan cumi tinta hitam padas gurih khas Jawa Timur', foto:'https://drive.google.com/thumbnail?id=1QgIA519Elgqrw58xqV40hUlwmaLqD4KG&sz=w200' },
-  { kategori:'Paket', nama:'Potato Curry Chicken',      harga:15000, deskripsi:'Potongan ayam bumbu kari kental dengan rempah kuning yang menghangatkan tubuh', foto:'https://drive.google.com/thumbnail?id=1LlS0dNBl2dbthFTXWiJKvOtiBjPUycHF&sz=w200' },
-  { kategori:'Paket', nama:'Potato Spicy Mayo Tuna',    harga:15000, deskripsi:'Topping tuna segar dengan saus mayones pedas untuk sensai rasa yang lebih ringan', foto:'https://drive.google.com/thumbnail?id=1vp_z1VO3wqnjDjHI481nmWOVKRwr9WaQ&sz=w200' },
-  { kategori:'Paket', nama:'Potato Chessy Mushroom',    harga:15000, deskripsi:'Siraman saus keju lumer dan tumisan jamur kancing untuk pencinta rasa gurih modern', foto:'https://drive.google.com/thumbnail?id=1bmxQzsD5jVlMtMqPCyal5_tuGwl0GPq4&sz=w200' },
-  { kategori:'Paket', nama:'Kentang Rica-rica',         harga:15000, deskripsi:'Akselerasi rasa pedas dari topping ayam suwir bumbu rica rica manado yang segar', foto:'https://drive.google.com/thumbnail?id=12fxkSf57QG1YRyfDiv2F41iEkhPDAaN-&sz=w200' }
+  { nama:'Kentang Panggang',         harga:10000 },
+  { nama:'Carbonara Potato',          harga:15000 },
+  { nama:'Potato Beef Black Pepper',  harga:20000 },
+  { nama:'Kentang Panggang Sate',     harga:20000 },
+  { nama:'Kentang Panggang Rendang',  harga:20000 },
+  { nama:'Kentang Habang',            harga:15000 },
+  { nama:'Kentang Cumi Hitam',        harga:15000 },
+  { nama:'Potato Curry Chicken',      harga:15000 },
+  { nama:'Potato Spicy Mayo Tuna',    harga:15000 },
+  { nama:'Potato Chessy Mushroom',    harga:15000 },
+  { nama:'Kentang Rica-rica',         harga:15000 }
 ];
 
 // ─── STATE ──
@@ -410,7 +667,7 @@ let cart = {};
 let currentOrder = null;
 const WA_NUMBER = '6282352171714';
 
-// ─── NAVIGATION ───
+// ─── NAVIGATION ──
 function showScreen(n) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen' + n).classList.add('active');
@@ -419,16 +676,15 @@ function showScreen(n) {
 
 function goToOrder() {
   showScreen(2);
-  renderProductList();
   updateCart();
 }
 
-// ✨ FITUR BARU: Klik menu di halaman awal -> tambah keranjang & langsung ke halaman pesan
+// Fitur: Klik menu di halaman awal -> tambah keranjang & langsung ke halaman pesan
 function addToCartFromMenu(idx) {
-  cart[idx] = (cart[idx] || 0) + 1; // Tambah qty
-  showScreen(2);                    // Pindah screen
-  renderProductList();              // Refresh list produk
-  updateCart();                     // Refresh tampilan keranjang
+  cart[idx] = (cart[idx] || 0) + 1;
+  showScreen(2);
+  updateQtyDisplay(idx);
+  updateCart();
 }
 
 function goBack(to) {
@@ -443,47 +699,17 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ─── RENDER MENU ───
-function renderMenuGrid() {
-  const grid = document.getElementById('menuGrid');
-  grid.innerHTML = products.map((p, i) => `
-    <div class="menu-card" onclick="addToCartFromMenu(${i})">
-      <img class="menu-card-img" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/90x90/FFF8E1/D0021B?text='">
-      <div class="menu-card-name">${p.nama}</div>
-      <div class="menu-card-price">Rp ${Number(p.harga).toLocaleString('id-ID')}</div>
-      <div class="menu-card-cat">${p.kategori}</div>
-      <div class="menu-card-desc">${p.deskripsi.substring(0, 60)}...</div>
-    </div>
-  `).join('');
-}
-
-function renderProductList() {
-  const list = document.getElementById('productList');
-  list.innerHTML = products.map((p, i) => `
-    <div class="product-item">
-      <img class="product-thumb" src="${p.foto}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/72x72/FFF8E1/D0021B?text='">
-      <div class="product-info">
-        <span class="cat-badge ${p.kategori === 'Base' ? 'cat-base' : 'cat-paket'}">${p.kategori}</span>
-        <h3>${p.nama}</h3>
-        <div class="desc">${p.deskripsi}</div>
-        <div class="price">Rp ${Number(p.harga).toLocaleString('id-ID')}</div>
-      </div>
-      <div class="qty-ctrl">
-        <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
-        <span class="qty-val" id="qty-${i}">${cart[i] || 0}</span>
-        <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
-      </div>
-    </div>
-  `).join('');
-}
-
 // ─── CART LOGIC ───
 function changeQty(idx, delta) {
   const newVal = Math.max(0, (cart[idx] || 0) + delta);
   if (newVal === 0) delete cart[idx]; else cart[idx] = newVal;
-  const qtyEl = document.getElementById('qty-' + idx);
-  if (qtyEl) qtyEl.textContent = newVal || 0;
+  updateQtyDisplay(idx);
   updateCart();
+}
+
+function updateQtyDisplay(idx) {
+  const qtyEl = document.getElementById('qty-' + idx);
+  if (qtyEl) qtyEl.textContent = cart[idx] || 0;
 }
 
 function updateCart() {
@@ -526,17 +752,19 @@ function placeOrder() {
   sendWhatsApp(currentOrder);
   showTrackingScreen(currentOrder);
   
+  // Reset form
   cart = {};
   document.getElementById('custName').value = '';
   document.getElementById('custAddress').value = '';
-  renderProductList();
+  // Reset semua qty display di HTML
+  for(let i=0; i<products.length; i++) updateQtyDisplay(i);
   updateCart();
 }
 
 // ─── WHATSAPP ───
 function sendWhatsApp(order) {
   const detail = order.items.map(i => `• ${i.nama} x${i.qty} = Rp ${(i.harga*i.qty).toLocaleString('id-ID')}`).join('\n');
-  const msg = `Halo GO-TATO! 🥔\n\n*Pesanan Baru*\nID: ${order.orderId}\nNama: ${order.nama}\nAlamat: ${order.alamat}\n\n*Detail Pesanan:*\n${detail}\n\n*Total: Rp ${order.total.toLocaleString('id-ID')}*\n\nMohon konfirmasi pesanan ya 🙏`;
+  const msg = `Halo GO-TATO! \n\n*Pesanan Baru*\nID: ${order.orderId}\nNama: ${order.nama}\nAlamat: ${order.alamat}\n\n*Detail Pesanan:*\n${detail}\n\n*Total: Rp ${order.total.toLocaleString('id-ID')}*\n\nMohon konfirmasi pesanan ya 🙏`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
@@ -564,8 +792,8 @@ function simulateTracking() {
         curr.classList.add('active');
         if (i === 4) {
           curr.classList.remove('active'); curr.classList.add('done');
-          curr.querySelector('.step-icon').textContent = '';
-          document.getElementById('etaText').textContent = 'Sudah Tiba! ';
+          curr.querySelector('.step-icon').textContent = '🎉';
+          document.getElementById('etaText').textContent = 'Sudah Tiba! 🎉';
         }
       }
     }, d);
@@ -573,7 +801,7 @@ function simulateTracking() {
 }
 
 function contactViaWA() {
-  const msg = `Halo GO-TATO! 🥔 Saya ingin menanyakan status pesanan saya.\nID Pesanan: ${currentOrder?.orderId || '-'}\nNama: ${currentOrder?.nama || '-'}`;
+  const msg = `Halo GO-TATO!  Saya ingin menanyakan status pesanan saya.\nID Pesanan: ${currentOrder?.orderId || '-'}\nNama: ${currentOrder?.nama || '-'}`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
@@ -581,8 +809,6 @@ function contactViaWA() {
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('custName').addEventListener('input', updateCart);
   document.getElementById('custAddress').addEventListener('input', updateCart);
-  renderMenuGrid();
-  renderProductList();
 });
 </script>
 </body>
